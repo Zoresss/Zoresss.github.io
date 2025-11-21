@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniil Feratov | CyberSec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #02040a; /* Глубокий черный */
+            --card-bg: rgba(10, 20, 30, 0.7);
+            --primary: #00ff9d; /* Хакерский зеленый */
+            --secondary: #00b8ff; /* Кибер-синий */
+            --alert: #ff3366; /* Цвет для акцентов "угрозы/защита" */
+            --text-main: #e0e6ed;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Эффект "Сетки" на фоне (Cyber Grid) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            perspective: 500px;
+        }
+
+        /* Глоу-эффект в центре */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 184, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            animation: pulseGlow 8s infinite alternate;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .logo span { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 60px;
+        }
+
+        .glitch-wrapper {
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #fff, var(--text-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.role {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding: 5px 15px;
+            border: 1px solid var(--primary);
+            display: inline-block;
+            border-radius: 2px;
+            background: rgba(0, 255, 157, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.1);
+        }
+
+        .hero p.bio {
+            max-width: 650px;
+            color: var(--text-dim);
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            border-left: 3px solid var(--secondary);
+            padding-left: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 184, 255, 0.3);
+        }
+
+        /* Skills Grid */
+        .skills-section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .section-line {
+            height: 1px;
+            background: var(--text-dim);
+            flex-grow: 1;
+            opacity: 0.3;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0.5;
+        }
+
+        .skill-card h4 {
+            color: var(--text-main);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .skill-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0 120px;
+        }
+
+        .contact-container {
+            background: linear-gradient(145deg, rgba(20,30,40,0.8), rgba(10,10,10,0.9));
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Декоративные уголки */
+        .contact-container::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 30px;
+            height: 30px;
+            border-bottom: 2px solid var(--primary);
+            border-right: 2px solid var(--primary);
+        }
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid var(--primary);
+            border-left: 2px solid var(--primary);
+        }
+
+        .email-link {
+            font-size: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: 0.3s;
+            word-break: break-all;
+        }
+
+        .email-link:hover {
+            color: #fff;
+            text-shadow: 0 0 20px var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.8rem;
+            color: #555;
+            border-top: 1px solid #111;
+        }
+
+        /* Animation Keyframes */
+        @keyframes pulseGlow {
+            0% { opacity: 0.3; transform: translateX(-50%) scale(0.9); }
+            100% { opacity: 0.6; transform: translateX(-50%) scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .contact-container { padding: 30px 15px; }
+            .email-link { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">FERATOV<span>_DANIIL</span></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <p class="role">CYBERSECURITY SPECIALIST</p>
+            <h1>ФЕРАТОВ<br>ДАНИИЛ</h1>
+            <p class="bio">
+                <strong>Архитектор цифровой неуязвимости.</strong><br><br>
+                Моя стихия — это сети и скрытые потоки данных. Я занимаюсь пентестингом и глубоким анализом трафика, чтобы находить бреши в защите до того, как ими воспользуются злоумышленники. Анонимность и безопасность — это не просто слова, это мой кодекс.
+            </p>
+            <a href="#contact" class="btn">Связаться в 1 клик</a>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>БОЕВОЙ АРСЕНАЛ</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>Pentesting</h4>
+                    <p>Поиск уязвимостей и стресс-тестирование систем.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Traffic Analysis</h4>
+                    <p>Отслеживание и анализ сетевых пакетов. Ничто не скроется.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Network Security</h4>
+                    <p>Построение защищенных архитектур и сетей.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Anonymity & Privacy</h4>
+                    <p>Методы сокрытия цифрового следа и защита личности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <h2 style="color: var(--text-dim)">ИНИЦИАЛИЗАЦИЯ СВЯЗИ</h2>
+                <p style="margin-top: 10px; max-width: 500px;">
+                    Нужен аудит безопасности или консультация по анонимности? 
+                    Отправьте зашифрованный сигнал или просто напишите на почту.
+                </p>
+                
+                <a href="mailto:daniilferatov@gmail.com" class="email-link">
+                    daniilferatov@gmail.com
+                </a>
+
+                <form action="mailto:daniilferatov@gmail.com" method="post" enctype="text/plain" style="width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 15px; margin-top: 30px;">
+                    <input type="text" name="name" placeholder="Ваше имя / Nickname" style="padding: 15px; background: #000; border: 1px solid #333; color: var(--primary); font-family: 'Rajdhani';">
+                    <textarea name="message" rows="3" placeholder="Сообщение..." style="padding: 15px; background: #000; border: 1px solid #333; color: #fff; font-family: 'Rajdhani';"></textarea>
+                    <button type="submit" class="btn" style="border: none; cursor: pointer;">Отправить данные</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            System Status: Online. Secured by Daniil Feratov. &copy; 2024
+        </div>
+    </footer>
+
+</body>
+</html>
