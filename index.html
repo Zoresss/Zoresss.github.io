@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Away</title>
+    <style>
+        /* Основной стиль страницы */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #0a0a0a; /* Почти черный фон */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт */
+            overflow: hidden;
+        }
+
+        /* Контейнер для текста */
+        .message-container {
+            font-size: 3rem; /* Размер текста */
+            color: #e0e0e0; /* Светло-серый цвет букв */
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 
+                         0 0 20px rgba(255, 0, 0, 0.5); /* Красноватое свечение */
+        }
+
+        /* Курсор, который мигает в конце */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 3rem;
+            background-color: #ff3333;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+            margin-left: 5px;
+        }
+
+        /* Анимация мигания курсора */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Адаптация под мобильные */
+        @media (max-width: 600px) {
+            .message-container {
+                font-size: 1.5rem;
+                padding: 0 20px;
+                text-align: center;
+            }
+            .cursor {
+                height: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-container">
+        <span id="text"></span><span class="cursor"></span>
+    </div>
+
+    <script>
+        const textToType = "Сьебись от сюда"; // Твой текст
+        const typeSpeed = 100; // Скорость печати (мс между буквами)
+        const textElement = document.getElementById('text');
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                textElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, typeSpeed);
+            }
+        }
+
+        // Запуск функции при загрузке страницы
+        window.onload = typeWriter;
+    </script>
+
+</body>
+</html>
