@@ -3,85 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go Away</title>
+    <title>Daniil Feratov | Winter Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Основной стиль страницы */
-        body {
+        :root {
+            --bg-color: #0b132b;
+            --card-bg: rgba(28, 37, 65, 0.8);
+            --accent-color: #5bc0be;
+            --text-white: #ffffff;
+            --snow-color: #ffffff;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            background: linear-gradient(to bottom, #0b132b, #1c2541);
             height: 100vh;
-            background-color: #0a0a0a; /* Почти черный фон */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт */
             overflow: hidden;
+            color: var(--text-white);
         }
 
-        /* Контейнер для текста */
-        .message-container {
-            font-size: 3rem; /* Размер текста */
-            color: #e0e0e0; /* Светло-серый цвет букв */
-            text-transform: uppercase;
-            letter-spacing: 5px;
+        /* Контейнер для снежинок */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: var(--snow-color);
+            user-select: none;
+            z-index: 0;
+            opacity: 0.8;
+            filter: blur(1px);
+        }
+
+        /* Карточка профиля */
+        .profile-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
             position: relative;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 
-                         0 0 20px rgba(255, 0, 0, 0.5); /* Красноватое свечение */
+            z-index: 10;
         }
 
-        /* Курсор, который мигает в конце */
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 3rem;
-            background-color: #ff3333;
-            animation: blink 1s step-end infinite;
-            vertical-align: bottom;
-            margin-left: 5px;
+        .profile-card h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
-        /* Анимация мигания курсора */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .profile-card p {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-weight: 300;
         }
 
-        /* Адаптация под мобильные */
-        @media (max-width: 600px) {
-            .message-container {
-                font-size: 1.5rem;
-                padding: 0 20px;
-                text-align: center;
-            }
-            .cursor {
-                height: 1.5rem;
-            }
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-white);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .social-item:hover {
+            background: rgba(91, 192, 190, 0.2);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .social-item i {
+            margin-right: 12px;
+            font-size: 1.4rem;
+        }
+
+        .social-item span {
+            font-weight: 500;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(110vh); }
         }
     </style>
 </head>
 <body>
 
-    <div class="message-container">
-        <span id="text"></span><span class="cursor"></span>
+    <div id="snow-container"></div>
+
+    <div class="profile-card">
+        <h1>Daniil Feratov</h1>
+        <p>Cybersecurity Specialist</p>
+        
+        <div class="social-links">
+            <a href="https://t.me/zoresss" class="social-item" target="_blank">
+                <i class="fab fa-telegram-plane"></i>
+                <span>Telegram: @zoresss</span>
+            </a>
+            </div>
     </div>
 
     <script>
-        const textToType = "Сьебись от сюда"; // Твой текст
-        const typeSpeed = 100; // Скорость печати (мс между буквами)
-        const textElement = document.getElementById('text');
-        let charIndex = 0;
+        function createSnowflake() {
+            const snowContainer = document.getElementById('snow-container');const snowflake = document.createElement('div');
+            
+            // Настройки снежинки
+            const size = Math.random() * 5 + 2 + 'px';
+            const left = Math.random() * 100 + '%';
+            const duration = Math.random() * 3 + 4 + 's';
+            const opacity = Math.random();
 
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                textElement.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, typeSpeed);
-            }
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '•'; // Маленькая точка вместо сложной снежинки для минимализма
+            snowflake.style.left = left;
+            snowflake.style.fontSize = size;
+            snowflake.style.opacity = opacity;
+            snowflake.style.animation = fall ${duration} linear infinite;
+
+            snowContainer.appendChild(snowflake);
+
+            // Удаляем снежинку после завершения анимации, чтобы не перегружать DOM
+            setTimeout(() => {
+                snowflake.remove();
+            }, parseFloat(duration) * 1000);
         }
 
-        // Запуск функции при загрузке страницы
-        window.onload = typeWriter;
+        // Интервал появления снежинок
+        setInterval(createSnowflake, 100);
     </script>
-
 </body>
 </html>
