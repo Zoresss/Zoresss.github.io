@@ -1,169 +1,61 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniil Feratov | Winter Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #0b132b;
-            --card-bg: rgba(28, 37, 65, 0.8);
-            --accent-color: #5bc0be;
-            --text-white: #ffffff;
-            --snow-color: #ffffff;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
 
-        body {
-            background: var(--bg-color);
-            background: linear-gradient(to bottom, #0b132b, #1c2541);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: var(--text-white);
-        }
+    <section id="about" class="section">
+        <h2>Почему выбирают нас?</h2>
+        <div class="info-block">
+            <p><strong>Гуманитарно-технический колледж (ГТК)</strong> — это образовательное учреждение с богатой историей и инновационным подходом к обучению. Мы делаем упор на практические навыки, чтобы наши выпускники были конкурентоспособны на рынке труда Казахстана и зарубежья.</p>
+            <ul>
+                <li>Обучение на государственном и русском языках;</li>
+                <li>Наличие государственного образовательного заказа (гранты);</li>
+                <li>Современная материально-техническая база;</li>
+                <li>Активная студенческая жизнь и спорт.</li>
+            </ul>
+        </div>
+    </section>
 
-        /* Контейнер для снежинок */
-        #snow-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: var(--snow-color);
-            user-select: none;
-            z-index: 0;
-            opacity: 0.8;
-            filter: blur(1px);
-        }
-
-        /* Карточка профиля */
-        .profile-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 90%;
-            position: relative;
-            z-index: 10;
-        }
-
-        .profile-card h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .profile-card p {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .social-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text-white);
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .social-item:hover {
-            background: rgba(91, 192, 190, 0.2);
-            border-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .social-item i {
-            margin-right: 12px;
-            font-size: 1.4rem;
-        }
-
-        .social-item span {
-            font-weight: 500;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(110vh); }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="snow-container"></div>
-
-    <div class="profile-card">
-        <h1>Daniil Feratov</h1>
-        
-        <div class="social-links">
-            <a href="https://t.me/zoresss" class="social-item" target="_blank">
-                <i class="fab fa-telegram-plane"></i>
-                <span>Telegram: @zoresss</span>
-            </a>
+    <section id="specialties" class="section">
+        <h2>Наши специальности</h2>
+        <div class="specialties-grid">
+            <div class="card">
+                <h3>Программное обеспечение</h3>
+                <p>Квалификация: Техник-программист. Изучение языков программирования, баз данных и разработки мобильных приложений.</p>
             </div>
-    </div>
+            <div class="card">
+                <h3>Учет и аудит</h3>
+                <p>Квалификация: Экономист-бухгалтер. Подготовка специалистов по финансовому учету и налоговому планированию.</p>
+            </div>
+            <div class="card">
+                <h3>Начальное образование</h3>
+                <p>Квалификация: Учитель начальных классов. Педагогика, психология и методики преподавания основ наук.</p>
+            </div>
+            <div class="card">
+                <h3>Физическая культура</h3>
+                <p>Квалификация: Учитель физической культуры. Подготовка тренеров и преподавателей для школ и спортивных секций.</p>
+            </div>
+            <div class="card">
+                <h3>Дошкольное воспитание</h3>
+                <p>Квалификация: Воспитатель дошкольных учреждений. Развитие детей раннего возраста и подготовка к школе.</p>
+            </div>
+            <div class="card">
+                <h3>Туризм</h3>
+                <p>Квалификация: Менеджер по туризму. Организация туров, гостиничный бизнес и экскурсионная деятельность.</p>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        function createSnowflake() {
-            const snowContainer = document.getElementById('snow-container');
-const snowflake = document.createElement('div');
-            
-            // Настройки снежинки
-            const size = Math.random() * 5 + 2 + 'px';
-            const left = Math.random() * 100 + '%';
-            const duration = Math.random() * 3 + 4 + 's';
-            const opacity = Math.random();
+    <section id="contacts" class="section" style="text-align: center;">
+        <h2>Приемная комиссия</h2>
+        <div class="info-block">
+            <p>Ждем вас по адресу: <strong>г. Петропавловск, ул. Кошукова, 14</strong></p>
+            <p>Телефон для справок: <strong>+7 (7152) 53-15-15</strong></p>
+            <p>Email: info@gtk-petropavl.kz</p>
+            <p><i>Работаем с понедельника по пятницу: 09:00 - 18:00</i></p>
+        </div>
+    </section>
 
-            snowflake.classList.add('snowflake');
-            snowflake.innerHTML = '•'; // Маленькая точка вместо сложной снежинки для минимализма
-            snowflake.style.left = left;
-            snowflake.style.fontSize = size;
-            snowflake.style.opacity = opacity;
-            snowflake.style.animation = fall ${duration} linear infinite;
+    <footer>
+        <p>&copy; 2026 Гуманитарно-технический колледж г. Петропавловск</p>
+    </footer>
 
-            snowContainer.appendChild(snowflake);
-
-            // Удаляем снежинку после завершения анимации, чтобы не перегружать DOM
-            setTimeout(() => {
-                snowflake.remove();
-            }, parseFloat(duration) * 1000);
-        }
-
-        // Интервал появления снежинок
-        setInterval(createSnowflake, 100);
-    </script>
 </body>
 </html>
