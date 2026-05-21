@@ -7,187 +7,144 @@
 }
 
 body {
-    background-color: #f5f5f7;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
-
-.app-container {
-    width: 100%;
-    max-width: 430px; /* Размер экрана современного смартфона */
-    background: #ffffff;
-    min-height: 100vh;
+    background-color: #ffffff; /* Монолитно белый фон всего экрана */
     display: flex;
     flex-direction: column;
-    padding: 20px 16px env(safe-area-inset-bottom);
-    position: relative;
+    min-height: 100vh;
 }
 
 /* Шапка */
 header {
     display: flex;
     align-items: center;
-    height: 56px;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    padding: 16px;
+    background: #ffffff;
 }
 
 .back-btn {
     background: none;
     border: none;
+    color: #1c1c1e;
     cursor: pointer;
-    color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
-    margin-left: -8px;
 }
 
 .header-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: #1c1c1e;
-    margin-left: 24px;
 }
 
-/* Вкладки (Переключатели) */
+/* Вкладки */
+.tabs-wrapper {
+    padding: 0 16px; /* Отступы по бокам */
+    margin-bottom: 16px;
+}
+
 .tabs-container {
     background: #f2f2f7;
-    padding: 4px;
-    border-radius: 12px;
-    margin-bottom: 24px;
-}
-
-.tabs {
+    border-radius: 9px;
     display: flex;
+    padding: 3px;
+    width: 100%; /* Широкие вкладки */
 }
 
 .tab-btn {
     flex: 1;
     border: none;
-    background: none;
-    padding: 10px 0;
-    font-size: 15px;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 14px;
     font-weight: 500;
-    color: #2c2c2e;
+    color: #000;
     cursor: pointer;
-    border-radius: 9px;
-    transition: all 0.2s;
+    border-radius: 7px;
+    transition: 0.2s;
 }
 
 .tab-btn.active {
     background: #ffffff;
-    color: #000000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     font-weight: 600;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Карточки в центре */
-.document-viewer {
+/* Область документов */
+.cards-wrapper {
+    padding: 0 16px;
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .card-mockup {
     flex: 1;
-    min-height: 210px;
-    background: linear-gradient(180deg, #fbfbfd 0%, #efeff4 100%);
-    border-radius: 16px;
+    min-height: 220px;
+    background: #f4f4f5;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0,0,0,0.03);
+    overflow: hidden;
 }
 
 .upload-text {
-    font-size: 14px;
+    font-size: 13px;
     color: #8e8e93;
     text-align: center;
     padding: 20px;
     position: absolute;
+    z-index: 1;
 }
 
 .preview-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 2;
 }
 
 /* Кнопки внизу */
 .actions {
+    padding: 0 16px 24px 16px; /* Отступы от краев экрана */
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    width: 100%; /* Широкие кнопки */
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
 }
 
 .btn-primary {
-    width: 100%;
-    background: #0076d6;
+    background: #007aff;
     color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 16px;
     border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
 }
 
 .btn-secondary {
-    width: 100%;
     background: #ffffff;
-    color: #0076d6;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 16px;
-    border: 1.5px solid #d1d1d6;
-    border-radius: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    color: #007aff;
+    border: 1px solid #007aff;
 }
 
-/* Нижний индикатор */
-.home-indicator {
-    width: 140px;
-    height: 5px;
-    background: #000000;
-    opacity: 0.4;
-    border-radius: 100px;
-    margin: 0 auto;
+.btn-icon {
+    margin-right: 4px;
 }
-
-/* Баннер всплывашки установки PWA */
-.install-banner {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #3a3a3c;
-    color: white;
-    padding: 12px 16px;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 999;
-    font-size: 14px;
-}
-.install-banner button {
-    background: #0076d6;
-    border: none; color: white;
-    padding: 6px 12px; border-radius: 6px;
-    font-weight: bold;
-  }
