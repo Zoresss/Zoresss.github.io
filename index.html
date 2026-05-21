@@ -4,46 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Удостоверение личности</title>
-    
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ffffff">
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="ID">
-
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 
-<div id="installBanner" class="install-banner">
-    <span>Установить как приложение на экран</span>
-    <button id="installBtn">Установить</button>
-</div>
-
-<div class="app-container">
     <header>
         <button class="back-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </button>
         <h1 class="header-title">Удостоверение личности</h1>
-    </header>
+        <div style="width: 24px;"></div> </header>
 
-    <div class="tabs-container">
-        <div class="tabs">
+    <div class="tabs-wrapper">
+        <div class="tabs-container">
             <button class="tab-btn active">Документ</button>
             <button class="tab-btn">Реквизиты</button>
         </div>
     </div>
 
-    <div class="document-viewer" onclick="document.getElementById('fileInput').click()">
+    <div class="cards-wrapper" onclick="document.getElementById('fileInput').click()">
         <input type="file" id="fileInput" accept="image/*" hidden>
         
-        <div class="card-mockup top-card">
+        <div class="card-mockup">
             <img id="preview1" class="preview-img" src="" alt="" style="display:none;">
             <span class="upload-text">Нажмите для загрузки лицевой стороны</span>
         </div>
-        <div class="card-mockup bottom-card">
+        <div class="card-mockup">
             <img id="preview2" class="preview-img" src="" alt="" style="display:none;">
             <span class="upload-text">Нажмите для загрузки оборотной стороны</span>
         </div>
@@ -59,10 +46,7 @@
             Отправить документ
         </button>
     </div>
-    
-    <div class="home-indicator"></div>
-</div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
