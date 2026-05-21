@@ -1,0 +1,10 @@
+body { font-family: sans-serif; background: #f4f4f9; display: flex; justify-content: center; }
+.app-container { width: 100%; max-width: 400px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+.tabs { display: flex; background: #eee; padding: 5px; border-radius: 10px; margin-bottom: 20px; }
+.tab-btn { flex: 1; border: none; padding: 10px; border-radius: 8px; cursor: pointer; }
+.tab-btn.active { background: white; font-weight: bold; }
+
+.placeholder { height: 200px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; border-radius: 15px; cursor: pointer; color: #888; }
+.btn-primary { width: 100%; background: #007bff; color: white; padding: 15px; border: none; border-radius: 10px; margin-bottom: 10px; }
+.btn-secondary { width: 100%; background: white; color: #007bff; padding: 15px; border: 1px solid #007bff; border-radius: 10px; }
