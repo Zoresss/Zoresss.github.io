@@ -3,107 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Links</title>
-    <style>
-        /* Общие стили */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a; /* Темный глубокий фон */
-            color: #f1f5f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        /* Профиль */
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #38bdf8;
-            margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        p {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
-
-        /* Кнопки */
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-card {
-            background: #1e293b;
-            padding: 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            transition: transform 0.2s, background 0.3s, border-color 0.3s;
-            border: 1px solid transparent;
-        }
-
-        /* Индивидуальные цвета при наведении */
-        .link-card:hover {
-            transform: translateY(-3px);
-            background: #334155;
-        }
-
-        .tg:hover { border-color: #0088cc; }
-        .inst:hover { border-color: #e1306c; }
-        .ds:hover { border-color: #5865f2; }
-
-        /* Футер */
-        .footer {
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: #475569;
-        }
-    </style>
+    <title>Удостоверение личности</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <img src="https://via.placeholder.com/100" alt="Avatar" class="profile-img">
+<div class="app-container">
+    <header>
+        <button class="back-btn">←</button>
+        <h1>Удостоверение личности</h1>
+    </header>
 
-        <h1>Твое Имя / Никнейм</h1>
-        <p>Краткая инфа о себе: чем занимаешься или просто крутая цитата.</p>
+    <div class="tabs">
+        <button class="tab-btn active">Документ</button>
+        <button class="tab-btn">Реквизиты</button>
+    </div>
 
-        <div class="links">
-            
-            <a href="#" target="_blank" class="link-card tg">t.me/Niktalipa</a>
-
-            <a href="#" target="_blank" class="link-card inst">Instagram</a>
-
-            <a href="#" target="_blank" class="link-card ds">Discord</a>
-
-        </div>
-
-        <div class="footer">
-            © 2026 Crafted with Passion
+    <div class="document-viewer">
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <div class="placeholder" onclick="document.getElementById('fileInput').click()">
+            <img id="preview" src="" alt="" style="display:none; max-width: 100%;">
+            <span id="placeholder-text">Нажмите, чтобы загрузить фото</span>
         </div>
     </div>
 
+    <div class="actions">
+        <button class="btn-primary">Предъявить документ</button>
+        <button class="btn-secondary">Отправить документ</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
