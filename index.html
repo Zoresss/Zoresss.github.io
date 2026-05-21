@@ -9,12 +9,14 @@
 </head>
 <body>
 
+<div class="app-container">
     <header>
         <button class="back-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </button>
         <h1 class="header-title">Удостоверение личности</h1>
-        <div style="width: 24px;"></div> </header>
+        <div class="header-spacer"></div>
+    </header>
 
     <div class="tabs-wrapper">
         <div class="tabs-container">
@@ -23,16 +25,17 @@
         </div>
     </div>
 
-    <div class="cards-wrapper" onclick="document.getElementById('fileInput').click()">
+    <div class="cards-wrapper">
         <input type="file" id="fileInput" accept="image/*" hidden>
         
-        <div class="card-mockup">
+        <div class="card-mockup" onclick="document.getElementById('fileInput').click()">
             <img id="preview1" class="preview-img" src="" alt="" style="display:none;">
-            <span class="upload-text">Нажмите для загрузки лицевой стороны</span>
+            <span class="upload-text" id="text1">Нажмите для загрузки лицевой стороны</span>
         </div>
-        <div class="card-mockup">
+        
+        <div class="card-mockup" onclick="document.getElementById('fileInput').click()">
             <img id="preview2" class="preview-img" src="" alt="" style="display:none;">
-            <span class="upload-text">Нажмите для загрузки оборотной стороны</span>
+            <span class="upload-text" id="text2">Нажмите для загрузки оборотной стороны</span>
         </div>
     </div>
 
@@ -46,7 +49,8 @@
             Отправить документ
         </button>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
