@@ -1,28 +1,21 @@
 const fileInput = document.getElementById('fileInput');
 const previewImg = document.getElementById('previewImg');
-const pdfPreview = document.getElementById('pdfPreview');
 const uploadText = document.getElementById('uploadText');
 
 fileInput.addEventListener('change', function() {
     const file = this.files[0];
     if (file) {
-        // Создаем ссылку на загруженный файл в памяти
-        const fileUrl = URL.createObjectURL(file);
-        const isPdf = file.type === 'application/pdf';
-
-        if (isPdf) {
-            pdfPreview.src = fileUrl;
-            pdfPreview.style.display = 'block';
-            previewImg.style.display = 'none';
-        } else {
-            previewImg.src = fileUrl;
-            previewImg.style.display = 'block';
-            pdfPreview.style.display = 'none';
-        }
+        const reader = new FileReader();
         
-        // Скрываем текст-подсказку
-        uploadText.style.display = 'none';
+        // Как только файл прочитан, преобразуем его в строку данных и показываем
+        reader.onload = function(e) {
+            previewImg.src = e.target.result;
+            previewImg.style.display = 'block';
+            uploadText.style.display = 'none'; // Скрываем текст-подсказку
+        };
+        
+        reader.readAsDataURL(file);
     }
-    // Сбрасываем значение инпута для возможности повторной загрузки
+    // Сбрасываем инпут, чтобы можно было загружать фото повторно
     this.value = ''; 
 });
