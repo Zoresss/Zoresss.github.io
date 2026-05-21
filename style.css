@@ -7,10 +7,18 @@
 }
 
 body {
-    background-color: #ffffff; /* Монолитно белый фон всего экрана */
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+/* Главный контейнер, который решает проблему с горизонтальным сдвигом */
+.app-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
     min-height: 100vh;
+    background-color: #ffffff;
 }
 
 /* Шапка */
@@ -19,7 +27,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 16px;
-    background: #ffffff;
+    width: 100%;
 }
 
 .back-btn {
@@ -30,18 +38,27 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 32px;
+    height: 32px;
 }
 
 .header-title {
     font-size: 18px;
     font-weight: 600;
     color: #1c1c1e;
+    text-align: center;
+    flex: 1; /* Центрирует заголовок */
+}
+
+.header-spacer {
+    width: 32px; /* Заглушка для ровной симметрии шапки */
 }
 
 /* Вкладки */
 .tabs-wrapper {
-    padding: 0 16px; /* Отступы по бокам */
+    padding: 0 16px;
     margin-bottom: 16px;
+    width: 100%;
 }
 
 .tabs-container {
@@ -49,7 +66,7 @@ header {
     border-radius: 9px;
     display: flex;
     padding: 3px;
-    width: 100%; /* Широкие вкладки */
+    width: 100%;
 }
 
 .tab-btn {
@@ -62,7 +79,6 @@ header {
     color: #000;
     cursor: pointer;
     border-radius: 7px;
-    transition: 0.2s;
 }
 
 .tab-btn.active {
@@ -74,23 +90,25 @@ header {
 /* Область документов */
 .cards-wrapper {
     padding: 0 16px;
-    flex: 1;
+    flex: 1; /* Растягивает карточки на все свободное место */
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 24px;
+    width: 100%;
 }
 
 .card-mockup {
     flex: 1;
-    min-height: 220px;
-    background: #f4f4f5;
+    min-height: 200px;
+    background: linear-gradient(180deg, #fbfbfd 0%, #efeff4 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .upload-text {
@@ -114,10 +132,11 @@ header {
 
 /* Кнопки внизу */
 .actions {
-    padding: 0 16px 24px 16px; /* Отступы от краев экрана */
+    padding: 0 16px 24px 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
 }
 
 .btn-primary, .btn-secondary {
